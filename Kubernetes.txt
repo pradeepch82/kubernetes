@@ -65,8 +65,22 @@ This is a proxy service which runs on each node and helps in making services ava
 
 
 
+First Pod Example
+==================
 
-
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Pod
+metadata:
+  name: pc-nginx-pod
+  labels: 
+   app: pc-nginx-pod
+   type: front-end
+spec:
+ containers:
+   - name: nginx
+   image: nginx:1.7.9
+   ports:
+        - containerPort: 80
 
 
 
