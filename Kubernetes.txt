@@ -151,27 +151,62 @@ Use "kubectl <command> --help" for more information about a given command.
 Use "kubectl options" for a list of global command-line options (applies to all commands).
 
 
+======================================
+Day3
+
+Reference Links
+===============
+https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
+https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run
+
+Start a single instance of nginx    
+            =>kubectl run nginx --image=nginx
 
 
+Start a single instance of hazelcast and let the container expose port 5701 .
+            
+            kubectl run hazelcast --image=hazelcast --port=5701
 
+
+Start a single instance of hazelcast and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the container.
+          
+           kubectl run hazelcast --image=hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
+           
+Start a single instance of hazelcast and set labels "app=hazelcast" and "env=prod" in the container.
+
+          kubectl run hazelcast --image=hazelcast --labels="app=hazelcast,env=prod"
+          
+
+Start a replicated instance of nginx.
+
+         kubectl run nginx --image=nginx --replicas=5
+         
+Dry run. Print the corresponding API objects without creating them.
+
+         kubectl run nginx --image=nginx --dry-run         
+         
+
+Start a single instance of nginx, but overload the spec of the deployment with a partial set of values parsed from JSON.
+
+       kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
 
 
 First Pod Example
 ==================
 
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: v1
 kind: Pod
 metadata:
-  name: pc-nginx-pod
-  labels: 
-   app: pc-nginx-pod
-   type: front-end
+  name: nginx
 spec:
- containers:
-   - name: nginx
-   image: nginx:1.7.9
-   ports:
+  containers:
+    - image: nginx
+      name: nginx
+      ports:
         - containerPort: 80
+          name: http
+
+
 
 
 
