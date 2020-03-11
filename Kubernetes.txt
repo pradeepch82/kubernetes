@@ -317,6 +317,7 @@ spec:
     type: front-end
 
 
+kubectl create -f ./service-definition.yaml
 
 
 
