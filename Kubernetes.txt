@@ -320,6 +320,59 @@ spec:
 kubectl create -f ./service-definition.yaml
 
 
+day5
+====
+Ingress 7 is Layer 7 Load balancer in Kubernetes cluster that can be configured by
+using native kubernetes primitives just as other kubernetes objects
+
+Even Ingress shoud be exposed to make it accessible outside cluster 
+
+1.Ingress Service (Node Port)
+2.Ingress Service (Load Balancer)
+
+ Deploy  (Reverse proxy/Load Balancing Solution  Nginx ,HA Proxy or trafik)
+       The solution you deploye is called as Ingress Controller
+ 
+ Configure (defining services,routes etc)
+       The set of rules you define are called as Ingress resources
+       Ingress resources can be created using definition files similar to (pods,services and deployments)
+       
+
+A Kubernetes cluster doesnot come with Ingress controller default.
+  You must deploy this one
+  GCP HTTP(s) ,Load Balancer (GCE)
+  NgiNX
+  Ingress Controller have additional intelligence built in to them
+  1.monitor K8s cluster for new definitions and Ingress resources
+  2.configure nginx server accordingly
+  
+  Nginx controller has been deployed as another deployment.
+  
+  https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html
+  
+  
+  
+  
+  
+  
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+ 
+ 
+
+
+
+
+
+
 
 
 
