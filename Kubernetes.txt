@@ -348,7 +348,27 @@ A Kubernetes cluster doesnot come with Ingress controller default.
   
   Nginx controller has been deployed as another deployment.
   
-  https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-ingress-guide-nginx-example.html
+    
+    Install Kubernetes Ingress Controller
+    Kubernetes Ingress is an additional Kubernetes Resources which can be installed by:
+
+
+   kubectl apply -f  https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.24.1/deploy/mandatory.yaml
+   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.24.1/deploy/provider/cloud-generic.yaml
+  
+  
+  Using the following command you’ll see the k8s resources which get installed in the namespace ingress-nginx:
+
+  kubectl get svc,pod --namespace=ingress-nginx
+
+
+Reference url :  https://codeburst.io/kubernetes-ingress-simply-visually-explained-d9cad44e4419
+
+
+
+
+
+  
   
   
   
