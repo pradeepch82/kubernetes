@@ -267,6 +267,55 @@ kubectl diff -f ./my-manifest.yaml
 
 
 
+day4
+=====
+
+kubectl run pradeep-nginx --image=nginx --port=80 --replicas=3
+
+kubectl expose deployment pradeep-nginx --type=NodePort --name=pradeep-np-nginx-service
+
+kubectl expose deployment pradeep-nginx --type=LoadBalancer --name=pradeep-lb-nginx-service
+
+
+
+
+
+
+Proxy    : It is a server which hides the identity of client
+=====    
+
+Benefits
+             1.Anonymity
+             2.Caching
+             3.Blocking Unwanted Site 
+             4.GeoFencing
+    
+    
+     Client 1   -----------
+                           
+     Client 2   -----------                 Proxy Server  ---------------        Server          
+   
+     Client 3  ------------
+     
+   
+Reverse Proxy    : It is a server which hides the identity of Server
+=============
+   Benefits
+            Load balancing
+            Caching
+            Isolating the internal traffic
+            Logging
+            
+                                                                           -------- Server1
+
+
+         Client  (80)--------------------    Reverse Proxy    ---------------- -------- Server2
+
+ 
+                                                                           -------- Server3
+                                                                           
+
+
 Pod Yaml file Example
 =====================
 apiVersion: v1
