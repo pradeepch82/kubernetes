@@ -428,6 +428,105 @@ A Kubernetes cluster doesnot come with Ingress controller default.
 
   kubectl get svc,pod --namespace=ingress-nginx
 
+tea-pod-def.yaml
+================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tea-pod
+  labels:    
+    app: tea
+    type: front-end
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    
+tea-svc-def.yaml
+================
+apiVersion: v1
+kind: Service
+metadata:
+  name: tea-svc
+spec:
+  selector:
+    app: tea
+    type: front-end
+  ports:
+    - port: 30501
+      targetPort: 80
+  type: LoadBalancer
+    
+    
+coffee-pod-def.yaml
+===================
+apiVersion: v1
+kind: Pod
+metadata:
+  name: coffee-pod
+  labels:    
+    app: coffee
+    type: front-end
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    
+coffee-svc-def.yaml
+===================
+apiVersion: v1
+kind: Service
+metadata:
+  name: coffee-svc
+spec:
+  selector:
+    app: coffee
+    type: front-end
+  ports:
+    - port: 30502
+      targetPort: 80
+  type: LoadBalancer
+  
+  
+  cafe-ingress.yaml
+  ==================
+  apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cafe-ingress
+  annotations:
+    nginx.org/sticky-cookie-services: "serviceName=coffee-svc srv_id expires=1h path=/coffee"
+    nginx.com/jwt-realm: "Cafe App"  
+    nginx.com/jwt-token: "$cookie_auth_token"
+    nginx.com/jwt-key: "cafe-jwk" 
+spec:
+  rules:
+   - http:
+      paths:
+      - path: /tea
+        backend:
+          serviceName: tea-svc
+          servicePort: 80
+      - path: /coffee
+        backend:
+          serviceName: coffee-svc
+          servicePort: 80
+      
+Commands to create a folder and index .html
+===========================================
+
+kubectl exec -it tea-pod -- /bin/bash
+mkdir /usr/share/nginx/html/tea
+echo "<font color='brown' size='7'> Welcome To Tea Service</font>" > /usr/share/nginx/html/tea/index.html
+
+
+kubectl exec -it coffee-pod -- /bin/bash
+mkdir /usr/share/nginx/html/coffee
+echo "<font color='green' size='7'> Welcome To Coffee Service</font>" > /usr/share/nginx/html/coffee/index.html
+
+  
+
+
 
 Reference url :  https://codeburst.io/kubernetes-ingress-simply-visually-explained-d9cad44e4419
 
