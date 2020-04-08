@@ -516,11 +516,13 @@ Commands to create a folder and index .html
 ===========================================
 
 kubectl exec -it tea-pod -- /bin/bash
+echo "<font color='magenta' size='7'> Hello Tea Service</font>'" > /usr/share/nginx/html/index.html
 mkdir /usr/share/nginx/html/tea
 echo "<font color='brown' size='7'> Welcome To Tea Service</font>" > /usr/share/nginx/html/tea/index.html
 
 
 kubectl exec -it coffee-pod -- /bin/bash
+echo "<font color='brown' size='7'> Hello Coffe Service</font>'" > /usr/share/nginx/html/index.html
 mkdir /usr/share/nginx/html/coffee
 echo "<font color='green' size='7'> Welcome To Coffee Service</font>" > /usr/share/nginx/html/coffee/index.html
 
