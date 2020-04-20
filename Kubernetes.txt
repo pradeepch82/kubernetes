@@ -1,10 +1,204 @@
 
+Kubernetes Training
+===================
+
+Kubernetes is a platform that eliminates the manual processes involved in deploying containerized applications. 
+In this training we will cover the concepts related to this multi-container management solution.
+
+Topics to be coverd
+====================
+
+Challenges Without Container Orchestration
+Docker Swarm or Kubernetes
+What is Kubernetes?
+Kubernetes Features
+Kubernetes Architecture
+Kubernetes Case-Study
+Hands-On
+
+
+Brief of Containerization
+=========================
+So, before containers came into existence, the developers and the testers always had a tiff between them. 
+This usually, happened because what worked on the dev side, would not work on the testing side.
+Both of them existed in different environments. Now, to avoid such scenarios containers were introduced
+so that both the Developers and Testers were on the same page.
+
+Handling a large number of containers all together was also a problem.
+Sometimes while running containers, on the product side, few issues were raised,
+which were not present at the development stage. This kind of scenarios introduced the 
+Container Orchestration System. 
+
+
+
+Challenges Without Container Orchestration
+===========================================
+When multiple services run inside containers, you may want to scale these containers.
+In large scale industries, this is really tough to do. That’s because it would increase 
+the cost to maintain services, and the complexity to run them side by side.
+
+Now, to avoid setting up services manually & overcome the challenges, something big was needed. 
+This is where Container Orchestration Engine comes into the picture.
+
+This engine, lets us organize multiple containers, in such a way that all the 
+underlying machines are launched, containers are healthy and distributed in a clustered environment.
+In today’s world, there are mainly two such engines: 
+
+     1.Kubernetes
+     2.Docker Swarm.
+
+ when compared with Docker Swarm owns a great active community and empowers 
+ auto-scaling in many organizations. Similarly, Docker Swarm has an easy to start 
+ cluster when compared to Kubernetes, but it is limited to the Docker API’s capabilities.
+
+
+Docker Swarm                     Kubernetes
+ ========================================================================
+ 1.No Autoscaling                    1.Auto Scaling
+ 
+ 2.Good community                    2.Great active community
+ 
+ 3.Easy to start a cluster           3.Difficult to start a cluster
+ 
+ 4.Limited to Docker                 4.Can overcome constraints of
+   API capability                     Docker and Docker API
+
+ 5.Does not have a much              5.Deployed at scale more often 
+   experience with production          among organization
+   deployments at scale
+
+
+If you want to choose between the two, then it would have to be Kubernetes since,
+containers need to be managed and connected to the outside world for tasks such as
+scheduling, load balancing, and distribution.
+
+But, if you think logically, Docker Swarm would make a better option, as it runs on 
+Kubernetes being an undisputed leader in the market and also does run on top of Docker containers 
+with better functionalities.
+
+
+Kubernetes Features
+====================
+
+1.Automated Scheduling:
+
+ Kubernetes provides advanced scheduler to launch container on cluster nodes based on
+ their resource requirements and other constraints, while not sacrificing availability.
+
+
+2.Self Healing Capabilities: 
+
+Kubernetes allows to replaces and reschedules containers when nodes die. 
+It also kills containers that don’t respond to user-defined health check and doesn’t 
+advertise them to clients until they are ready to serve. 
+
+
+3.Automated rollouts & rollback: 
+
+Kubernetes rolls out changes to the application or its configuration while monitoring
+application health to ensure it doesn’t kill all your instances at the same time.
+If something goes wrong, with Kubernetes you can rollback the change.
+
+
+4.Horizontal Scaling & Load Balancing:
+ Kubernetes can scale up and scale down the application as per the requirements 
+ with a simple command, using a UI, or automatically based on CPU usage.
+
+
+Kubernetes Architecture
+=============================
+Kubernetes Architecture has the following main components:
+
+1.Master nodes
+2.Worker/Slave nodes
+
+Master Node
+===========
+The master node is responsible for the management of Kubernetes cluster. It is mainly the entry point for all administrative tasks. There can be more than one master node in the cluster to check for fault tolerance.
+   
+ 
+ The master node has various components like API Server, Controller Manager, Scheduler and ETCD.
+
+1.API Server: 
+============
+The API server is the entry point for all the REST commands used to control the cluster.
+
+2.Controller Manager: 
+======================
+Is a daemon that regulates the Kubernetes cluster, and manages different 
+non-terminating control loops.
+
+3.Scheduler: 
+============
+The scheduler schedules the tasks to slave nodes. It stores the resource usage 
+information for each slave node.
+
+4.ETCD:
+=======
+ETCD is a simple, distributed, consistent key-value store. 
+It’s mainly used for shared configuration and service discovery.
+
+Worker/Slave nodes
+==================
+Worker nodes contain all the necessary services to manage 
+the networking between the containers, communicate with the master node, and 
+assign resources to the scheduled containers.
+
+
+Worker nodes 
+=============
+Worker Nodes contain all the necessary services to manage the networking 
+between the containers, communicate with the master node, and assign 
+resources to the scheduled containers.
+
+
+The worker node has various components like 
+Docker Container, Kubelet, Kube-proxy, and Pods.
+
+Docker Container:
+=================
+Docker runs on each of the worker nodes, and runs the configured pods
+
+Kubelet: 
+========
+Kubelet gets the configuration of a Pod from the API server and ensures 
+that the described containers are up and running.
+
+Kube-proxy: 
+===========
+Kube-proxy acts as a network proxy and a load balancer for a service
+on a single worker node
+
+Pods: 
+=====
+A pod is one or more containers that logically run together on nodes. 
+
+
+
 
 What is Kubernetes? 
 ======================
-Kubernetes is a container management technology developed in Google lab to manage containerized applications in different kind of environments such as physical, virtual, and cloud infrastructure.
+Kubernetes is a container management technology developed in Google lab to manage 
+containerized applications in different kind of environments such as physical, virtual, 
+and cloud infrastructure.
 
-Kubernetes comes with a capability of automating deployment, scaling of application, and operations of application containers across clusters. It is capable of creating container centric infrastructure.
+
+Kubernetes comes with a capability of automating deployment, scaling of application, and 
+operations of application containers across clusters. It is capable of creating container
+centric infrastructure.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Features of Kubernetes
