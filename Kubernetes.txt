@@ -152,6 +152,7 @@ between the containers, communicate with the master node, and assign
 resources to the scheduled containers.
 
 
+
 The worker node has various components like 
 Docker Container, Kubelet, Kube-proxy, and Pods.
 
