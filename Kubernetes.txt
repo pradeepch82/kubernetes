@@ -279,6 +279,9 @@ Containers,Pods,ReplicaSets,Services,Secrets,ConfigMaps,Deployments,DaemonSets
 kubectl controls the Kubernetes cluster manager.
 
  Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+                           https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+                           
+ 
 
 Basic Commands (Beginner):
   create         Create a resource from a file or from stdin.
