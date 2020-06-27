@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hotel
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hotel-ingress
+  namespace: hotel
+spec:
+  rules:
+  - host: node01 
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hotel-svc
+          servicePort: 80
+        
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hotel
+  namespace: hotel
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hotel
+  template:
+    metadata:
+      labels:
+        app: hotel
+    spec:
+      containers:
+      - name: hotel
+        image: pradeepch82/cafe:1.1
+        ports:
+        - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hotel-svc
+  namespace: hotel
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: hotel
